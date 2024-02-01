@@ -47,7 +47,7 @@ app_subsys *subsystems[] = {
 	&dnsu2t_subsys,
 };
 
-static const char *confname = "redsocks.conf";
+static const char *confname = "/etc/redsocks.conf";
 static const char *pidfile = NULL;
 
 static void terminate(int sig, short what, void *_arg)
