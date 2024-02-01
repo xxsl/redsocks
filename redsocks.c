@@ -788,6 +788,10 @@ void redsocks_shutdown(redsocks_client *client, struct bufferevent *buffev, int 
 	if (shut_both(client)) {
 		redsocks_log_error(client, LOG_DEBUG, "both client and server disconnected");
 		redsocks_drop_client(client);
+	} else {
+		if (how == SHUT_WR && buffev == client->relay && client->relay->enabled == 0) {
+			redsocks_drop_client(client);
+		}
 	}
 }
 
